@@ -9,8 +9,13 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from  '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { ListMoviesComponent } from './list-movies/list-movies.component';
+import { InterceptorService } from './services/interceptor.service';
+import { CreateMovieComponent } from './create-movie/create-movie.component';
+import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { MovieComponent } from './movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,11 @@ import { RegisterComponent } from './register/register.component';
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListMoviesComponent,
+    CreateMovieComponent,
+    EditMovieComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,12 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,29 @@
+<div class="container" style="margin-top: 10%;">
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Creator</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let movie of movies">
+                    <th>{{movie.title}}</th>
+                    <td>{{movie.genre}}</td>
+                    <td>{{movie.year}}</td>
+                    <td>{{movie.creator}} {{currentUsername}}</td>
+                    <td><button class="btn btn-primary" routerLink="/movie/{{movie.id}}">View</button> <button *ngIf="currentUsername == movie.creator" class="btn btn-warning" routerLink="/movie/{{movie.id}}/edit">Edit</button> <button (click)="deleteMovie(movie.id)" class="btn btn-danger" *ngIf="currentUsername == movie.creator">Delete</button></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+  
+ 

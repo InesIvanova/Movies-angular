@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 
 
@@ -10,7 +11,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   private loginPath = environment.apiUrl + 'rest-auth/login/'
   private registerPath = environment.apiUrl + 'rest-auth/registration/'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(data) {
     return this.http.post(this.loginPath, data)
@@ -21,7 +22,7 @@ export class AuthService {
   }
 
   getToken() {
-    localStorage.getItem('token')
+    return localStorage.getItem('token')
   }
 
   saveUserEmail(userEmail) {
@@ -29,9 +30,22 @@ export class AuthService {
     localStorage.setItem('email', userEmail)
   }
 
+  saveUsername(username) {
+    localStorage.setItem('username', username)
+  }
+
+  getUsername() {
+    return localStorage.getItem('username')
+  }
+
   register(data) {
     return this.http.post(this.registerPath,  data)
   }
 
-
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
+    this.router.navigate(["login"])
+  }
 }

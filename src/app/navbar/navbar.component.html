@@ -15,11 +15,14 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
+        <li class="nav-item" (click)="logout()">
+          <a class="nav-link" >Logout</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" routerLink="/movies">All Movies</a>
+            <a class="dropdown-item" routerLink="/movies/create">Crete Movie</a>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
         </li>
