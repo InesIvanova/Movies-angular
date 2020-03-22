@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form  class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
+                <img class="mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSVElkX7lB-tFhFYGYiPTU5BqD0-WUeF4q-xwdd8N_sAJuHdCeB" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                <label for="inputEmail" class="sr-only">Username</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Username" formControlName="username">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="password">
+                <div class="checkbox mb-3">
+                </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
